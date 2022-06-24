@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="hit"
+            type="com.shakatreh.hamditechnicalchallenge.models.Hit" />
+
+        <variable
+            name="listener"
+            type="com.shakatreh.hamditechnicalchallenge.screens.home.ClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_margin="@dimen/_16sdp"
+        android:onClick="@{() -> listener.onHitClicked(hit)}"
+        app:cardCornerRadius="@dimen/_4sdp"
+        app:cardElevation="@dimen/_4sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/_6sdp">
+
+            <ImageView
+                android:id="@+id/iv_thumbnail"
+                android:layout_width="@dimen/_100sdp"
+                app:imageUrl="@{hit.previewURL}"
+                android:layout_height="@dimen/_100sdp"
+                android:contentDescription="@string/thumbnail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_user"
+                style="@style/regularTextView"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@{@string/by(hit.user)}"
+                tools:text="by: random name"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toEndOf="@id/iv_thumbnail"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

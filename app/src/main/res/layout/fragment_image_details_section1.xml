@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.shakatreh.hamditechnicalchallenge.screens.imageDetails.ImageDetailsViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.imageDetails.ImageDetailsSection1">
+
+        <ImageView
+            android:id="@+id/iv_full_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            android:contentDescription="@string/thumbnail"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{viewModel.hit.previewURL}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_size"
+            style="@style/regularTextView"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@{@string/image_size(viewModel.hit.imageSize)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_full_image"
+            tools:text="Test Text" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            style="@style/regularTextView"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:text="@{@string/image_type(viewModel.hit.type)}"
+            app:layout_constraintStart_toStartOf="@id/tv_size"
+            app:layout_constraintTop_toBottomOf="@id/tv_size"
+            tools:text="Test Text" />
+
+        <TextView
+            android:id="@+id/tv_tags"
+            style="@style/regularTextView"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:text="@{@string/image_tags(viewModel.hit.tags)}"
+            app:layout_constraintStart_toStartOf="@id/tv_size"
+            app:layout_constraintTop_toBottomOf="@id/tv_type"
+            tools:text="Test Text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
